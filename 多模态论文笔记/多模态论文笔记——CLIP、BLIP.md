@@ -1,7 +1,7 @@
 ﻿> 大家好，这里是好评笔记，公主号：Goodnote，专栏文章私信限时Free。本文详细介绍这几年AIGC火爆的隐藏功臣，多模态模型：CLIP、BLIP。
 > 
 
-![在这里插入图片描述](https://github.com/GoodnoteX/Ai_Interview/blob/main/多模态论文笔记/image/1.png)
+![在这里插入图片描述](https://github.com/GoodnoteX/Ai_Interview/blob/main/多模态论文笔记/image/3.png)
 
 > @[toc]
 # CLIP（Contrastive Language-Image Pre-training）
