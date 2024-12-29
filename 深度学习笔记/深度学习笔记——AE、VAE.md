@@ -3,7 +3,7 @@
 > 
 
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/9f941705c1854d518297173f7132c430.png#pic_center)
+![在这里插入图片描述](https://github.com/GoodnoteX/Ai_Interview/blob/main/深度学习笔记/image/10.png)
 
 
 > @[toc]
@@ -41,139 +41,7 @@
 > - VAE(自变分编码器，Variational Autoencoders)则是在AE的基础上，**显性的对 $Z$ 的分布 $p(z)$ 进行建模**(比如符合某种常见的概率分布)，使得自编码器成为一个合格的生成模型。
 
 # 变分自编码器（Variational Autoencoder, VAE）详解
-**论文：** [Auto-Encoding Variational Bayes](https://arxiv.org/pdf/1312.6114)
-
-**VAE（Variational Autoencoder）** 是一种**概率生成模型**，它**结合了自编码器（Autoencoder，AE）的结构**和**概率分布**，不仅能**对输入数据进行重构**，还能够**生成**与训练数据相似的**全新样本**。它的**主要特点**是在**潜在空间中引入概率分布**，使得它**可以通过对潜在空间的采样来生成新数据**。**相比于AE**，VAE 引入了**概率分布和生成建模**，使其具备更强的生成能力。
-
-## VAE 的结构组成
-VAE 与 AE 类似，也由 **编码器** 和 **解码器** 组成，但它对编码部分做了关键的改进：
-
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/fc5e08b66da14aa9aa649adb88898cc3.png)
 
 
-1. **编码器（Encoder）**
-- 在 AE 中，编码器直接输出一个**固定的低维表示 $Z$**，即输入数据通过一系列神经网络变换得到一个低维特征向量。
-- 在 VAE 中，编码器输出的是输入 $X$ 对应的潜在变量的均值 $\mu$ 和方差 $\sigma^2$（通过Mean Layer (均值层) 和 Variance Layer (方差层)），即输入数据被映射为**一个潜在空间的分布**（通常假设是正态分布）。
-- 数学表达式为：  
-  $$
-  Z \sim \mathcal{N}(\mu(X), \sigma^2(X))
-  $$
-    - 其中 Z 是从该正态分布中采样的潜在变量。
-
-
-2. **采样阶段（Sampling）**
-- AE 的目标是数据压缩和重建，而VAE 的目标是通过**在潜在空间中进行采样**采样潜在变量 𝑧 ，并将 𝑧 输入解码器与输入数据相似的全新样本。然而，**采样操作本身是非确定性的**，这导致**无法**对整个网络**进行梯度传递**。**为了让梯度能够通过随机采样传播**，VAE 引入了**重参数化技巧**。
-- **重参数化技巧**通过将随机变量分解为**可导的确定性部分（均值和标准差）**和**独立的随机噪声**来确保了模型的可导性，以便在训练过程中**通过反向传播来优化网络参数**。具体来说，它将 𝑧 表示为：
-  $$
-    Z = \mu + \sigma \cdot \epsilon
-  $$
-	其中：
-	- $\mu$ 和 $\sigma$ 是**编码器**输出的**均值和标准差**（它们是**可导**的）。
-	- $\epsilon \sim \mathcal{N}(0,1)$ 是一个服从标准正态分布的**随机噪声**。
-
->**重参数化技巧** 将采样过程改写为**可微分的部分**（编码器输出的均值和标准差）和**不可微的标准正态噪声之和**，使得**梯度能够通过随机采样传播**。这使得 VAE 可以在训练过程中通过反向传播对编码器和解码器进行优化。
->
-
->  在VAE 中，**采样是必不可少**，用于**在潜在空间中生成新的样本**，这个过程是**不确定的**。
-> 在AE中，编码器将输入数据压缩到潜在空间，生成一个固定的潜在表示（通常是一个固定维度的向量）。解码器随后利用这个潜在表示重构出原始数据。这一过程是**确定性的**，**不需要在潜在空间中进行采样**。
-
-3. **解码器（Decoder）**：解码器部分**与 AE 相似**，接收潜在变量 $Z$，然后将其映射回原始数据空间，生成与输入数据相似的重构数据 $\hat{X}$。
-
-
-
-## 损失函数
-VAE 的损失函数不仅包含**重构误差**，还引入了 **KL 散度**，用于衡量潜在分布与先验分布（通常是标准正态分布之间的差异）。
-- **重构损失（Reconstruction Loss）**：度量解码器重构输入的能力。与 AE 类似，VAE 也通过**最小化输入数据与重构数据之间的误差**来训练模型。常用的重构损失是**均方误差**（**MSE**）或**交叉熵损失**（CE），根据具体数据类型选择。
-- **KL 散度（Kullback-Leibler Divergence, KL Divergence）**：**衡量`编码器输出`的潜在分布** $q(Z|X)$ 与**指定的`先验分布`**（通常假设是标准正态分布）之间的**差异**，**鼓励潜在空间分布接近于先验分布**，从而使得模型能够从该潜在空间进行采样生成新数据。
-   - **总损失函数**
-      $$
-      \mathcal{L}_{\text{VAE}} = \mathbb{E}_{q(z|x)}\left[\log p(x|z)\right] - D_{KL}\left(q(z|x) \parallel p(z)\right)
-      $$
-      其中：
-        - **$\mathbb{E}_{q(z|x)}\left[\log p(x|z)\right]$**：**重构误差项**。鼓励解码器生成尽可能与输入数据相似的样本。
-        - **$D_{KL}\left(q(z|x) \parallel p(z)\right)$**：**KL 散度项**。确保潜在空间结构化和生成的多样性。
-
-## VAE 相比 AE 的优化和改进
-
-VAE 在 AE 的基础上进行了几个重要的优化和改进，其**目的在于增强模型的生成能力**，并为潜在空间提供更好的结构：
-### 概率分布引入
-AE 直接将输入映射到一个**固定的低维表示，不能很好地表达数据之间的变异性**。VAE 改进了这一点，编码器输出的是**潜在空间的均值和方差**，潜在空间中的每一个点都代表了数据的一个可能变体，使得该模型具有生成多样性。
-   
-   **优化目的**：引入概率分布后，模型能够通过在潜在空间中进行随机采样**生成多样化的样本**，而**不仅仅是对输入数据的压缩和重构**。
-
-### 重参数化技巧
-由于潜在变量是通过从分布中采样得到的，普通的 AE 无法通过采样过程来传递梯度，导致无法直接训练生成模型。VAE 通过引入重参数化技巧，**使得采样过程可以通过梯度下降优化模型**。
-
-   **优化目的**：通过重参数化，VAE 可以对潜在分布进行更好的学习和优化，进而**提高生成数据的质量**。
-
-### 损失函数的KL 散度正则化
-AE 只关注数据重构，**容易导致潜在空间缺乏结构**，导致生成新数据时效果较差。VAE 通过**最小化编码分布**与**先验分布的 KL 散度**，使得**潜在空间有更好的组织结构**。这样的正则化项迫使潜在空间接近标准正态分布，从而确保从潜在空间中采样能够生成合理的新样本。
-
-   **优化目的**：通过 KL 散度的引入，VAE 不仅可以对训练数据进行重构，还可以**生成与训练数据分布一致的新样本**，潜在空间更具结构化，生成效果更好。
-# AE 与 VAE 的主要区别
-
-AE 和 VAE 在**结构、目的和优化方式**上存在多个重要区别：
-
-| **特性**                  | **AE**                                                                 | **VAE**                                                                            |
-|---------------------------|------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| **编码器输出**            | **固定的低维向量**（确定性的表示）                                         | 隐藏变量的均值 		$\mu$ 和方差 $\sigma^2$（表示**潜在空间的分布**）                 |
-| **潜在空间**              | 没有明确的分布假设                                                   | 假设潜在空间遵循某种概率分布（通常为正态分布）                                   |
-| **解码器**                | 从固定低维向量生成输入数据的近似                                       | 使用 **重参数化技巧** 从潜在变量的分布中采样，再通过解码器生成输入数据的近似                           |
-| **损失函数**              | 仅有**重构损失**，最小化输入数据与重构数据的差异                           | **重构损失 + KL 散度**，既保证数据重构效果，又保证潜在空间的分布合理                 |
-| **目的**                  | 数据降维、特征提取或数据去噪                                           | 生成新数据（如图像生成、文本生成等），同时保留对输入数据的重构能力               |
-| **生成新数据的能力**      | 无法直接生成新数据                                                     | 可以通过**在潜在空间中采样生成**与训练数据相似的**全新数据**                             |
-
-# 补充
-
-## 为什么需要重参数化技巧？
-   AE 的目标是数据压缩和重建，而VAE 的目标是通过采样潜在变量 𝑧 ，并将 𝑧 输入解码器与输入数据相似的全新样本。采样通常是一个非可微的过程，不利于通过梯度下降优化模型，所以引入 重参数化技巧。
-
-- 在VAE中，编码器将输入数据$x$映射到潜在空间的一个概率分布，即生成潜在表示的均值$\mu(x)$和标准差$\sigma(x)$。为了从这个概率分布中采样，我们会得到潜在表示$z$：
-$$ z \sim q(z|x) = N(z;\mu(x),\sigma(x)^2) $$
-
-直接从这个分布中采样的过程是**随机的**，因此**梯度无法传播**回编码器，导致模型无法进行端到端训练。
-
-为了解决这个问题，**重参数化技巧**将**采样过程**重新表示为一个**确定性计算**，从而使整个网络能够进行端到端的梯度传递和优化。
-
-重参数化技巧的核心思想是将随机变量 \( z \) 表示为：
-
-$$ z=\mu(x)+\sigma(x)\cdot\epsilon $$
-其中：
-- $\mu(x)$是编码器生成的均值。
-- $\sigma(x)$是编码器生成的标准差。
-- $\epsilon$是一个服从标准正态分布的随机噪声，$\epsilon\sim N(0,1)$。
-
-这样，采样过程可以分解为两个部分：
-1. **确定性部分** μ(x) 和 σ(x)：编码器生成的均值和标准差，这两个部分是可导的，能够传递梯度。
-2. **随机性部分** ϵ：标准正态分布的噪声，它与模型参数无关，独立于编码器的计算。
-
-通过这种分解，我们可以将原本不可导的采样过程变为一个**可导的操作**，使得整个网络可以通过反向传播训练。
-# 历史文章
-
-## 机器学习
-
-[机器学习笔记——损失函数、代价函数和KL散度](https://blog.csdn.net/haopinglianlian/article/details/143831958?)
-[机器学习笔记——特征工程、正则化、强化学习](https://blog.csdn.net/haopinglianlian/article/details/143832118?)
-[机器学习笔记——30种常见机器学习算法简要汇总](https://blog.csdn.net/haopinglianlian/article/details/143832321)
-[机器学习笔记——感知机、多层感知机(MLP)、支持向量机(SVM)](https://blog.csdn.net/haopinglianlian/article/details/143832552)
-[机器学习笔记——KNN（K-Nearest Neighbors，K 近邻算法）](https://blog.csdn.net/haopinglianlian/article/details/143832692)
-[机器学习笔记——朴素贝叶斯算法](https://blog.csdn.net/haopinglianlian/article/details/143832781?)
-[机器学习笔记——决策树](https://blog.csdn.net/haopinglianlian/article/details/143834363)
-[机器学习笔记——集成学习、Bagging（随机森林）、Boosting（AdaBoost、GBDT、XGBoost、LightGBM）、Stacking](https://blog.csdn.net/haopinglianlian/article/details/143834494?)
-[机器学习笔记——Boosting中常用算法（GBDT、XGBoost、LightGBM）迭代路径](https://blog.csdn.net/haopinglianlian/article/details/143834628)
-[机器学习笔记——聚类算法（Kmeans、GMM-使用EM优化）](https://blog.csdn.net/haopinglianlian/article/details/143834707)
-[机器学习笔记——降维](https://blog.csdn.net/haopinglianlian/article/details/143834847)
-
-## 深度学习
-[深度学习笔记——优化算法、激活函数](https://blog.csdn.net/haopinglianlian/article/details/143835137)
-[深度学习——归一化、正则化](https://blog.csdn.net/haopinglianlian/article/details/143835273)
-[深度学习——权重初始化、评估指标、梯度消失和梯度爆炸](https://blog.csdn.net/haopinglianlian/article/details/143835336)
-[深度学习笔记——前向传播与反向传播、神经网络（前馈神经网络与反馈神经网络）、常见算法概要汇总](https://blog.csdn.net/haopinglianlian/article/details/143835406)
-[深度学习笔记——卷积神经网络CNN](https://blog.csdn.net/haopinglianlian/article/details/143841327)
-[深度学习笔记——循环神经网络RNN、LSTM、GRU、Bi-RNN](https://blog.csdn.net/haopinglianlian/article/details/143841402)
-[深度学习笔记——Transformer](https://blog.csdn.net/haopinglianlian/article/details/143841447)
-[深度学习笔记——3种常见的Transformer位置编码](https://blog.csdn.net/haopinglianlian/article/details/144021458)
-[深度学习笔记——GPT、BERT、T5](https://blog.csdn.net/haopinglianlian/article/details/144092300)
-[深度学习笔记——ViT、ViLT](https://blog.csdn.net/haopinglianlian/article/details/144093215)
-[深度学习笔记——DiT（Diffusion Transformer）](https://blog.csdn.net/haopinglianlian/article/details/144094540)
-[深度学习笔记——多模态模型CLIP、BLIP](https://blog.csdn.net/haopinglianlian/article/details/144096378)
+> 详细全文请移步公主号：Goodnote。  
+参考：[欢迎来到好评笔记（Goodnote）！](https://mp.weixin.qq.com/s/lCcceUHTrM7wOjnxkfrFsQ)
