@@ -9,7 +9,7 @@
 由于格式限制，每篇文章仅展示部分内容（GitHub同步的MarkDown格式中，公式可能出现显示异常，不方便各位读者阅读），**完整文章可前往公众号查看**：  
 <img src="https://github.com/user-attachments/assets/1dcb11f1-b0a8-4410-b29e-de9c625d9a0d" width="700" />  
 
-或在CSDN中查看：
+或在**CSDN**中查看：
 **[好评笔记](https://blog.csdn.net/haopinglianlian?type=blog)**
 
 ## [机器学习笔记（基本更完）](https://github.com/GoodnoteX/AI_Interview/tree/main/机器学习笔记)
