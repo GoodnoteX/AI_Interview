@@ -1,7 +1,7 @@
 ﻿
 > 大家好，这里是好评笔记，公主号：Goodnote，专栏文章私信限时Free。本笔记介绍机器学习中常见的聚类算法（Kmeans、GMM-使用EM优化）。
 
-![在这里插入图片描述](https://github.com/GoodnoteX/Ai_Interview/blob/main/机器学习笔记/image/9.png)
+![在这里插入图片描述](https://github.com/GoodnoteX/Ai_Interview/blob/main/机器学习笔记/image/10.png)
 
 ---
 
