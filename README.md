@@ -16,7 +16,7 @@
 ## 机器学习笔记（基本更完）
 <img src="https://github.com/user-attachments/assets/eda88ef3-9627-4006-89e1-0291c94cb15f" width="500" />  
 
-订阅：[机器学习笔记](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk1NzgzMjY3OQ==&action=getalbum&album_id=3785370097922080771#wechat_redirect)
+订阅：[机器学习笔记](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk1NzgzMjY3OQ==&action=getalbum&album_id=3785370097922080771#wechat_redirect)  
 字数：10w+  
 内容：
 1. 机器学习笔记——损失函数、代价函数和KL散度  
