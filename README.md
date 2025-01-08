@@ -16,7 +16,7 @@
 ## 机器学习笔记（基本更完）
 <img src="https://github.com/user-attachments/assets/eda88ef3-9627-4006-89e1-0291c94cb15f" width="500" />  
 
-订阅：[机器学习笔记](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk1NzgzMjY3OQ==&action=getalbum&album_id=3785370097922080771#wechat_redirect)  
+订阅：[机器学习笔记](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk1NzgzMjY3OQ==&action=getalbum&album_id=3785370097922080771&scene=126#wechat_redirect)  
 字数：10w+  
 内容：
 1. 机器学习笔记——损失函数、代价函数和KL散度  
@@ -31,9 +31,10 @@
 10. 机器学习笔记——聚类算法（Kmeans、GMM-使用EM优化）  
 11. 机器学习笔记——降维  
 
-## [深度学习笔记（基本更完）](https://github.com/GoodnoteX/AI_Interview/tree/main/深度学习笔记)
+## 深度学习笔记（基本更完）
 <img src="https://github.com/user-attachments/assets/88151420-fecf-4f0f-b6c1-5279e76ced9d" width="500" />  
 
+订阅：[深度学习笔记](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk1NzgzMjY3OQ==&action=getalbum&album_id=3787967363480551430&scene=126#wechat_redirect)  
 字数：16w+  
 内容：
 1. 深度学习笔记——优化算法、激活函数  
