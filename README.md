@@ -10,8 +10,8 @@
 > **完整文章可前往公众号查看，强烈推荐（可私信获取离线版）**：  
 > <img src="https://github.com/user-attachments/assets/1dcb11f1-b0a8-4410-b29e-de9c625d9a0d" width="700" />  
 
-> 或在**CSDN中查看**：
-> **[好评笔记](https://blog.csdn.net/haopinglianlian?type=blog)**
+
+
 
 ## 机器学习笔记（基本更完）
 <img src="https://github.com/user-attachments/assets/eda88ef3-9627-4006-89e1-0291c94cb15f" width="500" />  
