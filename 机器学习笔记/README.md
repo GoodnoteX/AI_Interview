@@ -7,3 +7,6 @@
 本笔记基本更新完毕，会不定期更新一些补充内容。欢迎大家订阅，这里上传前两篇完整内容，密码：`Goodnote`：
 1. [机器学习笔记——损失函数、代价函数和KL散度](https://github.com/GoodnoteX/AI_Interview/blob/main/机器学习笔记/PDF/机器学习笔记——损失函数、代价函数和KL散度.pdf)
 2. [机器学习笔记——特征工程、正则化、强化学习](https://github.com/GoodnoteX/AI_Interview/blob/main/机器学习笔记/PDF/机器学习笔记——特征工程、正则化、强化学习.pdf)
+
+## 完整笔记合集
+订阅：[机器学习笔记](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk1NzgzMjY3OQ==&action=getalbum&album_id=3785370097922080771&scene=126#wechat_redirect)  
