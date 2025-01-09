@@ -6,3 +6,6 @@
 本笔记基本更新完毕，会不定期更新一些补充内容。欢迎大家订阅，这里上传前两篇完整内容，密码：`Goodnote`：
 1. [深度学习笔记——优化算法、激活函数](https://github.com/GoodnoteX/AI_Interview/blob/main/深度学习笔记/PDF/深度学习笔记——优化算法、激活函数.pdf)
 2. [深度学习笔记——归一化、正则化](https://github.com/GoodnoteX/AI_Interview/blob/main/深度学习笔记/PDF/深度学习笔记——归一化、正则化.pdf)
+
+## 完整笔记合集
+订阅：[深度学习笔记](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk1NzgzMjY3OQ==&action=getalbum&album_id=3787967363480551430&scene=126#wechat_redirect)  
