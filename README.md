@@ -18,7 +18,7 @@
 
 订阅：[机器学习笔记](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk1NzgzMjY3OQ==&action=getalbum&album_id=3785370097922080771&scene=126#wechat_redirect)  
 字数：10w+  
-状态：更新完毕
+状态：更新完毕  
 内容：
 1. 机器学习笔记——损失函数、代价函数和KL散度  
 2. 机器学习笔记——特征工程、正则化、强化学习  
@@ -33,11 +33,11 @@
 11. 机器学习笔记——降维  
 
 ## 深度学习笔记（基本更完）
-<img src="https://github.com/user-attachments/assets/88151420-fecf-4f0f-b6c1-5279e76ced9d" width="500" />  
+<img src="https://github.com/user-attachments/assets/88151420-fecf-4f0f-b6c1-5279e76ced9d" width="500" />   
 
-订阅：[深度学习笔记](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk1NzgzMjY3OQ==&action=getalbum&album_id=3787967363480551430&scene=126#wechat_redirect)  
+订阅：[深度学习笔记](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk1NzgzMjY3OQ==&action=getalbum&album_id=3787967363480551430&scene=126#wechat_redirect)    
 字数：16w+  
-状态：更新完毕
+状态：更新完毕  
 内容：
 1. 深度学习笔记——优化算法、激活函数  
 2. 深度学习——归一化、正则化  
@@ -56,15 +56,20 @@
 
 ## 多模态论文笔记（更新中）
 <img src="https://github.com/user-attachments/assets/c7b43aca-1605-4789-8dbe-0f027993acf5" width="500" />  
-订阅：[多模态论文笔记](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk1NzgzMjY3OQ==&action=getalbum&album_id=3789791049510551554&scene=126#wechat_redirect)  
 
+订阅：[多模态论文笔记](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk1NzgzMjY3OQ==&action=getalbum&album_id=3789791049510551554&scene=126#wechat_redirect)  
 字数：待定   
-状态：更新中
+状态：更新中  
 内容：
-1. 多模态论文笔记——ViT、ViLT  
-2. 多模态论文笔记——DiT（Diffusion Transformer）  
-3. 多模态论文笔记——多模态模型CLIP、BLIP  
-4. 多模态论文笔记——BLIP2  
-5. 多模态论文笔记——VQ-VAE和VQ-VAE-2  
-6. 多模态论文笔记——dVAE（DALL·E的核心部件）  
-7. 多模态论文笔记——LLaVA  
+1. 多模态论文笔记——笔记介绍
+2. 多模态论文笔记——ViT、VILT
+3. 多模态论文笔记——DiT (Diffusion Transformer)
+4. 多模态论文笔记——CLIP
+5. 多模态论文笔记——CLIP、BLIP
+6. 多模态论文笔记——BLIP2
+7. 多模态论文笔记——VQ - VAE和VQ - VAE - 2
+8. 多模态论文笔记——dVAE (DALL.E的核心部件)
+9. 多模态论文笔记——LLaVA
+10. 多模态论文笔记——Coca
+11. 多模态论文笔记——CogVLM和CogVLM2
+12. 多模态论文笔记——U - ViT (国内版Diit)
